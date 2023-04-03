@@ -23,7 +23,7 @@ def datos():
     
     def siguiente():
         
-      if unidades.get()=="1" or unidades.get()=="2" or unidades.get()=="3" or unidades.get()=="4":
+      if unidad=="1":
         
         def reg():
           act_sig.withdraw()
@@ -50,12 +50,14 @@ def datos():
           act_sig.withdraw()
           datos()
           
-        unidad=unidades.get()
+        unidad=1
         
         actualizacion.withdraw()
         
         act_sig=tk.Tk()
         act_sig.config(bg="dark green")
+        act_sig.iconbitmap("bookstack_libr_3024.ico")
+        act_sig.resizable(0,0)
         
         text_empty=tk.Label(act_sig,text="",bg="dark green")
         text_empty2=tk.Label(act_sig,text="",bg="dark green")
@@ -128,13 +130,18 @@ def datos():
       
     actualizacion=tk.Tk()
     actualizacion.config(bg="green")
+    actualizacion.iconbitmap("bookstack_libr_3024.ico")
+    actualizacion.resizable(0,0)
+    
+    text=tk.Label(actualizacion)
+    text.config(bg="green",text="¿Esta seguro de cambiar las calificaciones ya ingresadas?")
+    text.pack
     
     text1=tk.Label(actualizacion)
-    text1.config(bg="lime",text="Ingrese la unidad a modificar")
+    text1.config(bg="green",text="Preione el boton 'siguiente' para continuar")
     text1.pack()
     
-    unidades=tk.Entry(actualizacion)
-    unidades.pack()
+
     
     boton3=tk.Button(actualizacion,text="Continuar",command=siguiente)
     boton3.pack()
@@ -145,7 +152,9 @@ def datos():
   ventana.withdraw()
   ventanita=tk.Tk()
   ventanita.title("Lista de calificaciones")
-
+  ventanita.iconbitmap("bookstack_libr_3024.ico")
+  ventanita.resizable(0,0)
+  
   tabla=ttk.Treeview(ventanita)
   tabla["columns"]=('Unidad','Programacion orientada a objetos','Contabilidad financiera','Quimica','Algebra lineal','Calculo integral','Probabilidad y estadistica','Ingles','Promedio')
 
@@ -170,8 +179,8 @@ def datos():
   tabla.heading('Probabilidad y estadistica', text='probabilidad', anchor=tk.CENTER)
   tabla.heading('Ingles', text='Ingles', anchor=tk.CENTER)
   tabla.heading('Promedio', text='Promedio', anchor=tk.CENTER)
-  seleccionar="select * from materias where alumno = %s and unidad= %s"
   
+  seleccionar="select * from materias where alumno = %s and unidad= %s"
   ta = bd.cursor()
   ta.execute(seleccionar,(alumno_s,"1",))
   resultado = ta.fetchall()
@@ -227,7 +236,11 @@ def inicio():
 
   ventana.withdraw()
   inicio_sesion=tk.Tk()
+  inicio_sesion.title("Inicio de sesion de alumno")
+  inicio_sesion.iconbitmap("bookstack_libr_3024.ico")
   inicio_sesion.config(bg="light blue")
+  inicio_sesion.geometry("300x150")
+  inicio_sesion.resizable(0,0)
   
   text1=tk.Label(inicio_sesion,bg="light blue",text="Ingrese su nombre")
   text1.pack()
@@ -243,10 +256,10 @@ def inicio():
 
   boton=tk.Button(inicio_sesion)
   boton.config(bg="light pink",text="Continuar",command=iniciar)
-  boton.pack()
+  boton.pack(pady="1")
   
   boton2=tk.Button(inicio_sesion,bg="light pink",text="Regresar",command=regreso)
-  boton2.pack()
+  boton2.pack(pady="10")
 
 def registro():
   
@@ -276,7 +289,11 @@ def registro():
     
   ventana.withdraw()
   ventana74=tk.Tk()
+  ventana74.title("Registro de alumno")
+  ventana74.iconbitmap("bookstack_libr_3024.ico")
   ventana74.config(bg="light yellow")
+  ventana74.geometry("350x150")
+  ventana74.resizable(0,0)
   
   text1=tk.Label(ventana74)
   text1.config(bg="light yellow",text="Ingrese su nombre")
@@ -292,10 +309,10 @@ def registro():
   con.pack()
   
   boton=tk.Button(ventana74,bg="light blue",text="Continuar",command=registrar_a)
-  boton.pack()
+  boton.pack(pady="1")
   
   boton2=tk.Button(ventana74,bg="light blue",text="Regresar",command=regresar)
-  boton2.pack()
+  boton2.pack(pady="10")
 
 def paz():
   
@@ -303,16 +320,19 @@ def paz():
   
   ventana=tk.Tk()
   ventana.config(bg="light green")
-  ventana.title("Calificación")
+  ventana.title("Sistema de calificaciones")
 
   boton=tk.Button(ventana)
   boton.config(bg="pink",command=inicio,text="Iniciar sesion")
-  boton.pack()
+  boton.pack(pady="30")
 
   boton2=tk.Button(ventana)
   boton2.config(bg="pink",command=registro,text="Registrar usuario")
-  boton2.pack()
-
+  boton2.pack(pady="40")
+  ventana.iconbitmap("bookstack_libr_3024.ico")
+  ventana.resizable(0,0)
+  ventana.geometry("250x200")
+  
   ventana.mainloop()
 
 paz()
