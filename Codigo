@@ -22,7 +22,7 @@ def datos():
     ventanita.withdraw()
     
     def siguiente():
-        
+      unidad="1"
       if unidad=="1":
         
         def reg():
@@ -50,12 +50,13 @@ def datos():
           act_sig.withdraw()
           datos()
           
-        unidad=1
+        unidad="1"
         
         actualizacion.withdraw()
         
         act_sig=tk.Tk()
         act_sig.config(bg="dark green")
+        act_sig.title("Actualizar calificaciones")
         act_sig.iconbitmap("bookstack_libr_3024.ico")
         act_sig.resizable(0,0)
         
@@ -130,6 +131,7 @@ def datos():
       
     actualizacion=tk.Tk()
     actualizacion.config(bg="green")
+    actualizacion.title("¿Confirmar?")
     actualizacion.iconbitmap("bookstack_libr_3024.ico")
     actualizacion.resizable(0,0)
     
